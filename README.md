@@ -41,9 +41,11 @@ Add this to your controller:
 
     public $components = array('Saml.Saml');
     
-You can now call the following to require a user to be logged in to view the current page:
+You can then call the following to require a user to be logged in to view the current page:
 
     $this->Saml->requireAuth();
+    
+Refer to the [simpleSAMLphp SP API reference](http://simplesamlphp.org/docs/stable/simplesamlphp-sp-api) for more methods.
     
 Troubleshooting
 ---------------

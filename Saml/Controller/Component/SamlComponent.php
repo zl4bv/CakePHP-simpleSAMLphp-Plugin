@@ -43,6 +43,15 @@ class SamlComponent extends Component {
 	}
 	
 	/**
+	 * Retrieve the specified authentication data for the current session. NULL is returned if the user isn't authenticated.
+	 * 
+	 * @param string $name
+	 */
+	public function getAuthData(string $name) {
+		return $this->as->getAuthData($name);
+	}
+	
+	/**
 	 * Retrieves the URL that can start the authentication process.
 	 * 
 	 * @param string $returnTo The URL the user will be returned to. By default it is the current page.
