@@ -17,6 +17,7 @@ Simply drop the plugin folder in the `app/Plugin` folder.
 The plugin needs to be loaded manually in `app/Config/bootstrap.php`.
 
 You can either load the plugin in by name, or load all plugins with a single call:
+
     CakePlugin::loadAll(); // Loads all plugins at once
     CakePlugin::load('Saml'); //Loads a single plugin
 
@@ -26,18 +27,22 @@ Configuration
 Configuration is done in `app/Config/core.php`.
 
 Path to SimpleSAMLphp installation.
+
     Configure::write('Saml.SimpleSamlPath', '/path/to/simpleSAMLphp');
 
 Authentication source to use. Defaults to 'default-sp'.
+
     Configure::write('Saml.AuthSource', 'default-sp');
     
 Usage
 -----
 
 Add this to your controller:
+
     public $components = array('Saml.Saml');
     
 You can now call the following to require a user to be logged in to view the current page:
+
     $this->Saml->requireAuth();
     
 Troubleshooting
