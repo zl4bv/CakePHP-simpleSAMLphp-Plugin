@@ -33,9 +33,51 @@ Path to SimpleSAMLphp installation.
 Authentication source to use. Defaults to 'default-sp'.
 
     Configure::write('Saml.AuthSource', 'default-sp');
-    
-Usage
------
+
+Usage (CakePHP Custom Authentication Object)
+------------------------------
+This methods allows you to use simpleSAMLphp as a custom authentication object in simpleSAMLphp.
+
+In your `AppController.php` or other controller, add the following to start authenticating with this plugin:
+
+	public $components = array(
+			'Auth' => array(
+					'authenticate' => array('Saml.Saml')
+			));
+			
+To access the plugin in your controller:
+
+	public $components = array('Saml.Saml');
+			
+You will then need to create a login action to log users in:
+
+	public function login() {
+		if ($this->Saml->isAuthenticated()) {
+			return $this->redirect($this->Auth->redirect());
+		} else {
+			$this->Saml->login();
+		}
+	}
+	
+Note: You can optionally supply an array of parameters to `$this->Saml->login()` and these will be passed to simpleSAMLphp. See [here](http://simplesamlphp.org/docs/stable/saml:sp) for a full list of parameters.
+
+Now create an action to log users out:
+
+	public function logout() {
+		if ($this->Saml->isAuthenticated()) {
+			$this->Saml->logout();
+		} else {
+			$this->redirect($this->Auth->logout());
+		}
+	}
+	
+Note: Again, you can supply an array of parameters to `$this->Saml->logout()` and these will be passed to simpleSAMLphp.
+
+More information about authentication in CakePHP can be found [here](http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html).
+
+Usage (Manual usage)
+--------------------
+This allows you to fully control the authentication process. It allows you to call methods that are directly mapped to the SimpleSAML_Auth_Simple class.
 
 Add this to your controller:
 
@@ -45,7 +87,7 @@ You can then call the following to require a user to be logged in to view the cu
 
     $this->Saml->requireAuth();
     
-Refer to the [simpleSAMLphp SP API reference](http://simplesamlphp.org/docs/stable/simplesamlphp-sp-api) for more methods.
+Refer to `Controller/Component/SamlComponent.php` inside the plugin or the [simpleSAMLphp SP API reference](http://simplesamlphp.org/docs/stable/simplesamlphp-sp-api) for more information.
     
 Troubleshooting
 ---------------

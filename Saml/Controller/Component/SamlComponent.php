@@ -1,4 +1,6 @@
 <?php
+App::uses('Component', 'Controller');
+
 /**
  * Simple component to bind to the SimpleSAML_Auth_Simple class.
  * @author Ben Vidulich
