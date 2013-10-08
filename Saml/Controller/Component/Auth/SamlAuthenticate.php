@@ -34,7 +34,20 @@ class SamlAuthenticate extends Component {
 	/**
 	 * Logs the user out.
 	 */
-	public function logout() {
+	public function logout() { //FIXME Should this function do something?
+	}
+	
+	/**
+	 * Handles unauthenticated access attempt.
+	 * 
+	 * This method is provided for CakePHP 2.4 and above.
+	 * 
+	 * @param Controller $controller Currently unsupported.
+	 * @return boolean True if current action is login action else false.
+	 * @link http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html#handling-unauthenticated-requests
+	 */
+	public function unauthenticated(Controller $controller) {
+		return $this->Saml->isAuthenticated();
 	}
 }
 
