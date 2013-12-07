@@ -98,3 +98,31 @@ Check the following logs for possible information:
 * Apache error log
 * PHP error log (if different from the Apache error log)
 * simpleSAMLphp log
+
+Use SamlForm to authenticate using both SimpleSamlPHP and Auth->FormAuthenticate
+---------------
+First, load the custom authenticate method:
+
+	public $components = array(
+		'Auth' => array(
+	               'authenticate' => array('Saml.SamlForm'))
+	);
+	
+Then use it as you would normally use any FormAuthenticate. For example:
+- a login page could have both a form to login manually and a link to login via SimpleSamlPHP. The controller would then have something like this:
+
+	if($this->Auth->login())
+	{
+		$this->redirect($this->Auth->redirectUrl());
+	}
+	// Generate the samlLoginLink and after authenticate redirect to the same page
+		$samlLoginLink = $this->Saml->getLoginURL(Router::url($this->here, true));
+		$this->set(compact('samlLoginLink'));
+
+To logout of BOTH the session and SimpleSamlPHP, it is as simple as this:
+
+	$this->Auth->logout();
+	
+Note: in SamlFormAuthenticate.php you can add custom operations in authenticate().
+For example, you could unify SAML attributes with users in the database. If the SAML user does not exist -> create it the database using 'uid' as 'username'. If the SAML user already exists -> fetch the info in the database.
+This way, you could have a unified database using both your own users and SAML users.
