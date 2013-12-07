@@ -104,6 +104,7 @@ Use SamlForm to authenticate using both SimpleSamlPHP and Auth->FormAuthenticate
 First, load the custom authenticate method:
 
 	public $components = array(
+		'Saml.Saml',
 		'Auth' => array(
 	               'authenticate' => array('Saml.SamlForm'))
 	);
