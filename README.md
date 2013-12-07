@@ -109,7 +109,7 @@ First, load the custom authenticate method:
 	);
 	
 Then use it as you would normally use any FormAuthenticate. For example:
-- a login page could have both a form to login manually and a link to login via SimpleSamlPHP. The controller would then have something like this:
+A login page could have both a form to login manually and a link to login via SimpleSamlPHP. The controller would then have something like this:
 
 	if($this->Auth->login())
 	{
