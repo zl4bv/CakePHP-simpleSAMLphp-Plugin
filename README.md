@@ -1,18 +1,15 @@
-CakePHP-simpleSAMLphp-Plugin
-==================
+# CakePHP-simpleSAMLphp-Plugin
 
 Adds support for SAML authentication to CakePHP 2.x.
 
-Requirements
-------------
+## Requirements
 
 * Latest version of simpleSAMLphp (>= 1.9.0)
 * Latest version of CakePHP (>= 2.2.3)
 
-Installation
-------------
+## Installation
 
-Simply drop the plugin folder in the `app/Plugin` folder.
+Simply drop the *Saml* folder in the `app/Plugin` folder.
 
 The plugin needs to be loaded manually in `app/Config/bootstrap.php`.
 
@@ -23,8 +20,7 @@ You can either load the plugin in by name, or load all plugins with a single cal
     CakePlugin::load('Saml'); //Loads a single plugin
 ```
 
-Configuration
--------------
+## Configuration
 
 Configuration is done in `app/Config/core.php`.
 
@@ -40,8 +36,8 @@ Authentication source to use. Defaults to 'default-sp'.
     Configure::write('Saml.AuthSource', 'default-sp');
 ```
 
-Usage (CakePHP Custom Authentication Object)
-------------------------------
+## Usage (CakePHP Custom Authentication Object)
+
 This methods allows you to use simpleSAMLphp as a custom authentication object in simpleSAMLphp.
 
 In your `AppController.php` or other controller, add the following to start authenticating with this plugin:
@@ -89,8 +85,8 @@ Note: Again, you can supply an array of parameters to `$this->Saml->logout()` an
 
 More information about authentication in CakePHP can be found [here](http://book.cakephp.org/2.0/en/core-libraries/components/authentication.html).
 
-Usage (Manual usage)
---------------------
+## Usage (Manual usage)
+
 This allows you to fully control the authentication process. It allows you to call methods that are directly mapped to the SimpleSAML_Auth_Simple class.
 
 Add this to your controller:
@@ -107,8 +103,7 @@ You can then call the following to require a user to be logged in to view the cu
     
 Refer to `Controller/Component/SamlComponent.php` inside the plugin or the [simpleSAMLphp SP API reference](http://simplesamlphp.org/docs/stable/simplesamlphp-sp-api) for more information.
     
-Troubleshooting
----------------
+## Troubleshooting
 
 Check the following logs for possible information:
 
@@ -117,8 +112,8 @@ Check the following logs for possible information:
 * PHP error log (if different from the Apache error log)
 * simpleSAMLphp log
 
-Use SamlForm to authenticate using both SimpleSamlPHP and Auth->FormAuthenticate
----------------
+## Use SamlForm to authenticate using both SimpleSamlPHP and Auth->FormAuthenticate
+
 First, load the custom authenticate method:
 
 ```php
