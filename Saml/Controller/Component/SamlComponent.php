@@ -19,6 +19,8 @@ class SamlComponent extends Component {
 	 * override the authentication source set in `app/Config/bootstrap.php`.
 	 */
 	public function __construct(ComponentCollection $collection, array $settings, string $authSource = NULL) {
+                parent::__construct($collection, $settings);
+
 		// Check the config
 		if (Configure::read('Saml.SimpleSamlPath') != NULL) {
 			$this->path = Configure::read('Saml.SimpleSamlPath');
