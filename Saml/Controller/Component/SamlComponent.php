@@ -81,19 +81,21 @@ class SamlComponent extends Component {
 	/**
 	 * Starts the authentication process.
 	 *
-	 * @param mixed $url The URL to redirect to after logging in, or an associative array of parameters.
+	 * @param mixed $params Params to pass to SimpleSamlPHP.
+         * @link https://simplesamlphp.org/docs/stable/simplesamlphp-sp-api#section_4
 	 */
-	public function login(mixed $url) {
-		$this->as->login($url);
+	public function login($params = array()) {
+		$this->as->login($params);
 	}
 
 	/**
 	 * Logs the user out.
 	 *
-	 * @param mixed $url The URL to redirect to after logging out, or an associative array of parameters.
+	 * @param mixed $params Params to pass to SimpleSamlPHP.
+         * @link https://simplesamlphp.org/docs/stable/simplesamlphp-sp-api#section_5
 	 */
-	public function logout(mixed $url) {
-		$this->as->logout($url);
+	public function logout($params = array()) {
+		$this->as->logout($params);
 	}
 
 	/**
